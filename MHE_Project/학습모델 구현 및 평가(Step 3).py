@@ -3,6 +3,8 @@
 
 # In[158]:
 
+#학습시킬 csv파일          : aaaaaaaaa.csv
+#학습모델을 test할 csv파일 : bbbbbbbbb.csv
 
 import tensorflow as tf
 import numpy as np
@@ -11,8 +13,8 @@ import json
 import csv
 from sklearn.utils import shuffle
 
-data2=read_csv('TestingSet.csv',sep=',')
-data3=read_csv('TrainingFullSet.csv',sep=',')
+data2=read_csv('bbbbbbbbb.csv',sep=',')
+data3=read_csv('aaaaaaaaa.csv',sep=',')
 data3_shuffle = shuffle(data3)
 
 
