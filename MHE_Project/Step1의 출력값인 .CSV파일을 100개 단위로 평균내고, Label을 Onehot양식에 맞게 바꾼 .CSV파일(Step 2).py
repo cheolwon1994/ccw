@@ -2,7 +2,8 @@
 # coding: utf-8
 
 # In[62]:
-
+# step1에서 얻어낸 변형된 형태의 csv형태의 파일 : zzzzzz.csv
+# step2의 결과물 : kkkkkkk.csv
 
 import tensorflow as tf
 import numpy as np
@@ -13,7 +14,7 @@ import pandas as pd
 from operator import eq
 
 model = tf.global_variables_initializer()
-data = pd.read_csv('ForTest.csv',sep=',')
+data = pd.read_csv('zzzzzz.csv',sep=',')
 
 df2 = data[["AccelerometerX", "AccelerometerY", "AccelerometerZ","GyroscopeX", "GyroscopeY", "GyroscopeZ","Label","SegmentID"]]
 df3 = data[["AccelerometerX", "AccelerometerY", "AccelerometerZ","GyroscopeX", "GyroscopeY", "GyroscopeZ"]]
@@ -40,7 +41,7 @@ total4=0
 total5=0
 total6=0
 
-f = open('TestingSet.csv', 'w', encoding='utf-8', newline='')
+f = open('kkkkkkk.csv', 'w', encoding='utf-8', newline='')
 csv_writer = csv.writer(f)
 csv_writer.writerow(['','AccelerometerX25','AccelerometerY25','AccelerometerZ25','GyroscopeX25','GyroscopeY25','GyroscopeZ25','AccelerometerX50','AccelerometerY50','AccelerometerZ50','GyroscopeX50','GyroscopeY50','GyroscopeZ50','AccelerometerX75','AccelerometerY75','AccelerometerZ75','GyroscopeX75','GyroscopeY75','GyroscopeZ75','Label1','Label2','Label3','Label4'])
 
