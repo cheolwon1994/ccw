@@ -3,8 +3,13 @@
 
 # In[158]:
 
-#학습시킬 csv파일          : aaaaaaaaa.csv
-#학습모델을 test할 csv파일 : bbbbbbbbb.csv
+#학습시킬 csv파일          : fffffffff.csv
+
+#학습모델을 test할 csv파일 : aaaaaaaaa.csv
+                            bbbbbbbbb.csv
+                            ccccccccc.csv
+                            ddddddddd.csv
+                            eeeeeeeee.csv
 
 import tensorflow as tf
 import numpy as np
@@ -21,10 +26,10 @@ get_ipython().run_line_magic('matplotlib', 'inline')
 data2=read_csv('aaaaaaaaa.csv',sep=',')         #test set1
 data4=read_csv('bbbbbbbbb.csv',sep=',')         #test set2
 data5=read_csv('ccccccccc.csv',sep=',')         #test set3
-data6=read_csv('aaaaaaaaa.csv',sep=',')         #test set4
-data7=read_csv('aaaaaaaaa.csv',sep=',')         #test set5
+data6=read_csv('ddddddddd.csv',sep=',')         #test set4
+data7=read_csv('eeeeeeeee.csv',sep=',')         #test set5
 
-data3=read_csv('eeeeeeeee.csv',sep=',')         #training set
+data3=read_csv('fffffffff.csv',sep=',')         #training set
 data3_shuffle = shuffle(data3)
 
 
