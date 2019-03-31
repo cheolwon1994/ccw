@@ -203,7 +203,7 @@ int main(void){
 	printf("<PRINT,>\t%s\n",yytext);
     else if(tok == ELSE)
 	printf("<ELSE,>\t%s\n",yytext);
-    else if(tok == FLOAT)
+	else if(tok == FLOAT)
 	printf("FLOAT,>\t%s\n",yytext);
     else if(tok == QUOTATION)
 	printf("<QUOTATION,>\t%s\n",yytext);
