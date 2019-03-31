@@ -24,6 +24,7 @@
 #define RETURN		25
 #define PRINT		26
 #define ELSE		27
+#define FLOAT		28
 
 //SPECIFIC
 #define QUOTATION		30	//쌍따옴표
@@ -73,6 +74,7 @@ WHILE		"while"
 RETURN		"return"
 PRINT		"print"
 ELSE		"else"
+FLOAT		"float"
 
 
 QUOTATION 	"\""
@@ -119,6 +121,7 @@ WHITESPACE	[ \t\n\r]
 {RETURN}	{return RETURN;}
 {PRINT}		{return PRINT;}
 {ELSE}		{return ELSE;}
+{FLOAT}		{return FLOAT;}
 
 {QUOTATION}		{return QUOTATION;}
 {COMMA}			{return COMMA;}
@@ -200,6 +203,8 @@ int main(void){
 	printf("<PRINT,>\t%s\n",yytext);
     else if(tok == ELSE)
 	printf("<ELSE,>\t%s\n",yytext);
+	else if(tok == FLOAT)
+	printf("FLOAT,>\t%s\n",yytext);
     else if(tok == QUOTATION)
 	printf("<QUOTATION,>\t%s\n",yytext);
     else if(tok == COMMA)
