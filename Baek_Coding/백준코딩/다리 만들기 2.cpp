@@ -3,26 +3,19 @@
 #include <queue>
 #include <vector>
 using namespace std;
-/**************************
-1. ¿¬°áÇØº»´Ù
-2. ´Ù ºÙ¾ú´ÂÁö È®ÀÎ
-¼¶ÀÌ cnt°³ -> ´Ù¸®´Â cnt-1°³
-***************************/
 int row, col;
-int cnt = 1;		//¼¶ÀÇ °¹¼ö
+int cnt = 1;		//ì„¬ì˜ ê°¯ìˆ˜
 int arr[10][10];
 struct info {
 	int x, y, val;
 };
 info tmp;
-
 int result = 5000;
 int cx, cy, nx, ny, cv;
 int dx[4] = { 0,1,0,-1 };
 int dy[4] = { -1,0,1,0 };
-vector<info> v[7];		//¹Ù´Ù¿Í ¸Â´ê¾ÆÀÖ´Â ¼¶ºÎºĞÀ» ÀúÀå
-bool island[7] = { false, };	//¿¬°áµÈ ¼¶
-
+vector<info> v[7];		//ë°”ë‹¤ì™€ ë§ë‹¿ì•„ìˆëŠ” ì„¬ë¶€ë¶„ì„ ì €ì¥
+bool island[7] = { false, };	//ì—°ê²°ëœ ì„¬
 
 void mv(int y, int x, vector<int> &avail, vector<int> &b_len, int dir) {
 	cx = x;
@@ -71,7 +64,7 @@ void mv(int y, int x, vector<int> &avail, vector<int> &b_len, int dir) {
 	}
 }
 
-void check_attach(int len) {		//1ºÎÅÍ ½ÃÀÛ  ¹æÇâ
+void check_attach(int len) {		//1ë¶€í„° ì‹œì‘  ë°©í–¥
 	bool finish = true;
 	for (int i = 1; i <= cnt; i++) {
 		if (!island[i]) {
@@ -88,17 +81,15 @@ void check_attach(int len) {		//1ºÎÅÍ ½ÃÀÛ  ¹æÇâ
 			if (island[i]) {
 				for (int j = 0; j < v[i].size(); j++) {
 					if (v[i][j].val != 0) {
-						//cout << v[i][j].y << " " << v[i][j].x << " " << v[i][j].val << endl;
-						vector<int> avail(4, 0);		//¿¬°áµÇ´Â ¼¶
-						vector<int> b_len(4, 0);	//¿¬°áµÇ´Â ¼¶±îÁöÀÇ °Å¸®(2ÀÌ»ó)
-						mv(v[i][j].y, v[i][j].x, avail, b_len, 0);		//À§¾Æ·¡ È®ÀÎ
-						mv(v[i][j].y, v[i][j].x, avail, b_len, 1);		//ÁÂ¿ì È®ÀÎ
-						int non_avail = 0;				//´Ù¸® ÁöÀ» ¼ö ¾ø´Â »óÅÂ
+						vector<int> avail(4, 0);		//ì—°ê²°ë˜ëŠ” ì„¬
+						vector<int> b_len(4, 0);	//ì—°ê²°ë˜ëŠ” ì„¬ê¹Œì§€ì˜ ê±°ë¦¬(2ì´ìƒ)
+						mv(v[i][j].y, v[i][j].x, avail, b_len, 0);		//ìœ„ì•„ë˜ í™•ì¸
+						mv(v[i][j].y, v[i][j].x, avail, b_len, 1);		//ì¢Œìš° í™•ì¸
+						int non_avail = 0;				//ë‹¤ë¦¬ ì§€ì„ ìˆ˜ ì—†ëŠ” ìƒíƒœ
 						for (int k = 0; k < 4; k++) {
 							non_avail += avail[k];
-							//cout << avail[k] << " ";
 							if (b_len[k] > 0 && island[avail[k]] == false) {
-								//ÀÕ´Â´Ù
+								//ì‡ëŠ”ë‹¤
 								island[avail[k]] = true;
 								check_attach(len + b_len[k]);
 								island[avail[k]] = false;
@@ -106,10 +97,6 @@ void check_attach(int len) {		//1ºÎÅÍ ½ÃÀÛ  ¹æÇâ
 						}
 						if (non_avail == 0)
 							v[i][j].val = 0;
-						/*cout << endl;
-						for (int k = 0; k < 4; k++)
-							cout << b_len[k] << " ";
-						cout << endl;*/
 					}
 				}
 			}
@@ -179,6 +166,5 @@ int main() {
 		cout << -1;
 	else
 		cout << result;
-	system("pause");
 	return 0;
 }
