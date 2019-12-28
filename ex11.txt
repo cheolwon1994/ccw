@@ -1,9 +1,0 @@
-int f (int a, double b)
-{
-	int sum;
-	char dd = 'A';
-	sum = a + b;
-	print(a, b, sum);
-	print("%c",dd);
-	return 0;
-}
