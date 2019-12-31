@@ -81,7 +81,7 @@ int main() {
 	cin >> test;
 	for (int t = 1; t <= test; t++) {
 		cin >> num;
-		//�ʱ�ȭ
+		//ÃÊ±âÈ­
 		stair.clear();
 		people.clear();
 		result = MAX;
