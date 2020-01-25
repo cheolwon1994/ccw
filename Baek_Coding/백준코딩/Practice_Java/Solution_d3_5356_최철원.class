@@ -1,0 +1,41 @@
+package workshop;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Solution_d3_5356_ÃÖÃ¶¿ø {
+	static char arr[][];
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int test = sc.nextInt();
+		String str,result;
+		char c;
+		int maxi;
+		for(int t=1;t<=test;t++) {
+			result="";
+			maxi=0;
+			arr = new char[5][15];
+			for(char[] row: arr) {
+	            Arrays.fill(row, ' ');
+	        }
+			for(int i=0;i<5;i++) {
+				str = sc.next();
+				for(int j=0;j<str.length();j++) {
+					arr[i][j] = str.charAt(j);
+					if(maxi<str.length())
+						maxi = str.length();
+				}
+			}
+			for(int j=0;j<maxi;j++) {
+				for(int i=0;i<5;i++) {
+					if(arr[i][j]==' ')
+						continue;
+					else
+						result+=arr[i][j];
+				}
+			}
+			System.out.println("#"+t+" "+result);
+		}
+		sc.close();
+	}
+}
