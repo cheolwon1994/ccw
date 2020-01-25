@@ -1,0 +1,25 @@
+package workshop;
+
+import java.util.Scanner;
+
+public class Solution_d3_9229_ÃÖÃ¶¿ø {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int test = sc.nextInt();
+		int snack,max_weight,result;
+		int arr[];
+		for(int t=1;t<=test;t++) {
+			snack = sc.nextInt();
+			max_weight =sc.nextInt();
+			result=-1;
+			arr = new int[snack];
+			for(int i=0;i<snack;i++)
+				arr[i] = sc.nextInt();
+			for(int i=0;i<snack;i++)
+				for(int j=i+1;j<snack;j++) 
+					if(arr[i]+arr[j]<=max_weight && arr[i]+arr[j]>result) result = arr[i]+arr[j]; 
+			System.out.println("#"+t+" "+result);				
+		}
+		sc.close();
+	}
+}
