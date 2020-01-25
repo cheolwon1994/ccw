@@ -1,0 +1,38 @@
+package workshop;
+
+import java.util.Scanner;
+
+public class Solution_d2_1954_ÃÖÃ¶¿ø {
+	static int arr[][];
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int test, num, cnt,i,j,dir,len;
+		test = sc.nextInt();
+		for (int t = 1; t <= test; t++) {
+			num = sc.nextInt();
+			arr = new int[num][num];
+			cnt = 1; i=0; j=-1; dir=1; len =num;
+			while (true) {
+				for(int p=0;p<len;p++) {
+					j+=dir;
+					arr[i][j]=cnt++;
+				}
+				len--;
+				if(len<0) break;
+				for(int p=0;p<len;p++) {
+					i+=dir;
+					arr[i][j]=cnt++;
+				}
+				dir*=-1;
+			}
+			System.out.println("#"+t);
+			for(int p=0;p<num;p++) {
+				for(int k=0;k<num;k++)
+					System.out.print(arr[p][k]+" ");
+				System.out.println();
+			}
+		}
+		sc.close();
+	}
+}

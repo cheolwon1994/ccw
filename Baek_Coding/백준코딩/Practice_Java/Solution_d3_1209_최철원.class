@@ -1,0 +1,41 @@
+package workshop;
+
+import java.io.*;
+import java.util.Scanner;
+
+public class Solution_d3_1209_ÃÖÃ¶¿ø {
+	static int arr[][] = new int[100][100];
+	static int row[]= new int[100];
+	static int col[]= new int[100];
+	
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int test;
+		int diag1,diag2;
+		for(int t=1;t<=10;t++) {
+			test = sc.nextInt();
+			diag1=diag2=0;
+			for(int i=0;i<100;i++) {
+				row[i]=0;
+				col[i]=0;
+			}
+			for(int i=0;i<100;i++) {
+				for(int j=0;j<100;j++) {
+					arr[i][j]=sc.nextInt();
+					if(i==j)			diag1+=arr[i][j];
+					else if(i+j==99)	diag2+=arr[i][j];
+					row[i]+=arr[i][j];
+					col[j]+=arr[i][j];
+				}
+			}
+			int maxi=diag1;
+			if(diag2>maxi) maxi=diag2;
+			for(int i=0;i<100;i++) {
+				if(row[i]>maxi) maxi=row[i];
+				if(col[i]>maxi) maxi=col[i];
+			}
+			System.out.println("#"+t+" "+maxi);
+		}
+		sc.close();
+	}
+}
