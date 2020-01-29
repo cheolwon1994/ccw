@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 import java.util.Stack;
 import java.util.StringTokenizer;
 
-public class Solution_d4_1218_°ıÈ£Â¦Áş±â_¼­¿ï6¹İ_ÃÖÃ¶¿ø {
+public class Solution_d4_1218_ê´„í˜¸ì§ì§“ê¸°_ì„œìš¸6ë°˜_ìµœì² ì› {
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		for (int t = 1; t <= 10; t++) {
