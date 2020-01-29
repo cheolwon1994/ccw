@@ -2,7 +2,7 @@ package workshop;
 
 import java.util.Scanner;
 
-public class Solution_d2_1954_ÃÖÃ¶¿ø {
+public class Solution_d2_1954_ÃƒÃ–ÃƒÂ¶Â¿Ã¸ {
 	static int arr[][];
 
 	public static void main(String[] args) {
