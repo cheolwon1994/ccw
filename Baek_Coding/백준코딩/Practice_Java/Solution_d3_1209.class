@@ -3,7 +3,7 @@ package workshop;
 import java.io.*;
 import java.util.Scanner;
 
-public class Solution_d3_1209_ÃÖÃ¶¿ø {
+public class Solution_d3_1209_ÃƒÃ–ÃƒÂ¶Â¿Ã¸ {
 	static int arr[][] = new int[100][100];
 	static int row[]= new int[100];
 	static int col[]= new int[100];
