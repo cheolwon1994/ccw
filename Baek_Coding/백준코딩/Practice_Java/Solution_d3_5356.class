@@ -3,7 +3,7 @@ package workshop;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Solution_d3_5356_ÃÖÃ¶¿ø {
+public class Solution_d3_5356_ÃƒÃ–ÃƒÂ¶Â¿Ã¸ {
 	static char arr[][];
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
