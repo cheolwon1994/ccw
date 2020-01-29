@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 import java.util.Stack;
 import java.util.StringTokenizer;
 
-public class Solution_d4_1227_¹Ì·Î2_¼­¿ï6¹İ_ÃÖÃ¶¿ø {
+public class Solution_d4_1227_Â¹ÃŒÂ·Ã2_Â¼Â­Â¿Ã¯6Â¹Ã_ÃƒÃ–ÃƒÂ¶Â¿Ã¸ {
 
 	static int sx, sy, ex, ey;
 	static boolean finish;
