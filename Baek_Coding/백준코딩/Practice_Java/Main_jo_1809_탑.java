@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 import java.util.Stack;
 import java.util.StringTokenizer;
 
-public class Main_jo_1809_Å¾_¼­¿ï6¹İ_ÃÖÃ¶¿ø {
+public class Main_jo_1809_Ã…Â¾_Â¼Â­Â¿Ã¯6Â¹Ã_ÃƒÃ–ÃƒÂ¶Â¿Ã¸ {
 
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
