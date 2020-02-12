@@ -2,7 +2,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class Solution_d4_1232_사칙연산_서울_06_최철원 {
+public class Solution_d4_1232 {
 	static int num;
 	static class Tree {
 		class Node {
