@@ -3,7 +3,7 @@ package ssafy;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class Solution_d2_1970_½¬¿î°Å½º¸§µ·_¼­¿ï_06_ÃÖÃ¶¿ø {
+public class Solution_d2_1970_ì‰¬ìš´ê±°ìŠ¤ë¦„ëˆ {
 	static int payment[];
 	final static int bill[] = {50000,10000,5000,1000,500,100,50,10};
 	static int num;
