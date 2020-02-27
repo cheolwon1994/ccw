@@ -23,26 +23,26 @@ void play() {
 		int cr = row[cidx];
 		int cc = col[cidx];
 		int nr, nc;
-		if (cr == -1 && cc == -1) continue;		//ÀÌ¹Ì µµÂøÁöÁ¡ÀÎ °æ¿ì
+		if (cr == -1 && cc == -1) continue;		//ì´ë¯¸ ë„ì°©ì§€ì ì¸ ê²½ìš°
 		if (cr == 0) {
-			if (cc + cval >= 21) {	//µµÂøÁöÁ¡À» ³Ñ¾î°¡´Â °æ¿ì
+			if (cc + cval >= 21) {	//ë„ì°©ì§€ì ì„ ë„˜ì–´ê°€ëŠ” ê²½ìš°
 				row[cidx] = -1;
 				col[cidx] = -1;
 				continue;
 			}
-			if (cc+cval == 5) {		//9½Ã ¹æÇâ 10¿¡ µµÂøÇÑ °æ¿ì
+			if (cc+cval == 5) {		//9ì‹œ ë°©í–¥ 10ì— ë„ì°©í•œ ê²½ìš°
 				nr = 1;
 				nc = 0;
 			}
-			else if (cc+cval == 10) {		//6½Ã ¹æÇâ 20¿¡ µµÂøÇÑ °æ¿ì
+			else if (cc+cval == 10) {		//6ì‹œ ë°©í–¥ 20ì— ë„ì°©í•œ ê²½ìš°
 				nr = 2;
 				nc = 0;
 			}
-			else if (cc+ cval == 15) {		//3½Ã ¹æÇâ 30¿¡ µµÂøÇÑ °æ¿ì
+			else if (cc+ cval == 15) {		//3ì‹œ ë°©í–¥ 30ì— ë„ì°©í•œ ê²½ìš°
 				nr = 3;
 				nc = 0;
 			}
-			else if (cc+cval == 20) {		//12½Ã ¹æÇâ 40¿¡ µµÂøÇÑ °æ¿ì
+			else if (cc+cval == 20) {		//12ì‹œ ë°©í–¥ 40ì— ë„ì°©í•œ ê²½ìš°
 				nr = 5;
 				nc = 0;
 			}
@@ -52,16 +52,16 @@ void play() {
 			}
 		}
 		else if (cr == 1 || cr == 3) {
-			if (cc + cval == 8) {		//µµÂøÁöÁ¡¿¡ µµÂøÇÏ´Â °æ¿ì
+			if (cc + cval == 8) {		//ë„ì°©ì§€ì ì— ë„ì°©í•˜ëŠ” ê²½ìš°
 				row[cidx] = -1;
 				col[cidx] = -1;
 				continue;
 			}
-			else if (cc + cval == 7) {		//40¿¡ µµÂøÇÏ´Â °æ¿ì
+			else if (cc + cval == 7) {		//40ì— ë„ì°©í•˜ëŠ” ê²½ìš°
 				nr = 5;
 				nc = 0;
 			}
-			else if (3 < cc + cval && cc + cval < 7) {		//25~35»çÀÌ¿¡ µµÂøÇÏ´Â °æ¿ì
+			else if (3 < cc + cval && cc + cval < 7) {		//25~35ì‚¬ì´ì— ë„ì°©í•˜ëŠ” ê²½ìš°
 				nr = 4;
 				nc = cc + cval - 4;
 			}
@@ -71,16 +71,16 @@ void play() {
 			}
 		}
 		else if (cr == 2) {
-			if (cc + cval == 7) {		//µµÂøÁöÁ¡¿¡ µµÂøÇÏ´Â °æ¿ì
+			if (cc + cval == 7) {		//ë„ì°©ì§€ì ì— ë„ì°©í•˜ëŠ” ê²½ìš°
 				row[cidx] = -1;
 				col[cidx] = -1;
 				continue;
 			}
-			else if (cc + cval == 6) {		//40¿¡ µµÂøÇÏ´Â °æ¿ì
+			else if (cc + cval == 6) {		//40ì— ë„ì°©í•˜ëŠ” ê²½ìš°
 				nr = 5;
 				nc = 0;
 			}
-			else if (2 < cc + cval && cc + cval < 6) {		//25~35»çÀÌ¿¡ µµÂøÇÏ´Â °æ¿ì
+			else if (2 < cc + cval && cc + cval < 6) {		//25~35ì‚¬ì´ì— ë„ì°©í•˜ëŠ” ê²½ìš°
 				nr = 4;
 				nc = cc + cval - 3;
 			}
@@ -90,16 +90,16 @@ void play() {
 			}
 		}
 		else if (cr == 4) {	
-			if (cc + cval >= 4) {		//µµÂøÁöÁ¡ ³Ñ¾î°¡´Â °æ¿ì
+			if (cc + cval >= 4) {		//ë„ì°©ì§€ì  ë„˜ì–´ê°€ëŠ” ê²½ìš°
 				row[cidx] = -1;
 				col[cidx] = -1;
 				continue;
 			}
-			else if (cc+cval == 3) {		//40¿¡ µµÂøÇÏ´Â °æ¿ì
+			else if (cc+cval == 3) {		//40ì— ë„ì°©í•˜ëŠ” ê²½ìš°
 				nr = 5;
 				nc = 0;
 			}
-			else {			//30ÀÌ³ª 35¿¡ ¾ÈÂøÇÏ´Â °æ¿ì
+			else {			//30ì´ë‚˜ 35ì— ì•ˆì°©í•˜ëŠ” ê²½ìš°
 				nr = cr;
 				nc = cc + cval;
 			}
@@ -130,7 +130,7 @@ void set_player(int cnt) {
 		play();
 		return;
 	}
-	for (int i = 0; i < 4; i++) {
+	for (int i = 0; i <min(cnt+1,4); i++) {
 		player[cnt] = i;
 		set_player(cnt + 1);
 		player[cnt] = 0;
