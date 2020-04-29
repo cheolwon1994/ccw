@@ -3,7 +3,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class Solution_d4_4050_Àç°üÀÌÀÇ´ë·®ÇÒÀÎ {
+public class Solution_d4_4050_Ã€Ã§Â°Ã¼Ã€ÃŒÃ€Ã‡Â´Ã«Â·Â®Ã‡Ã’Ã€ÃŽ {
 	public static void main(String[] args) throws Exception{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int test= Integer.parseInt(br.readLine().trim());
