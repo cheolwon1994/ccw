@@ -1,50 +1,49 @@
 #include <iostream>
 using namespace std;
-struct Node {
-	Node* left;
-	Node* right;
-	char data;
+struct Node{
+	char val;
+	Node* l;
+	Node* r;
 };
+Node Tree[27];
+int node;
 
-void preorder(Node *n) {
-	cout << n->data;
-	if (n->left != NULL)	preorder(n->left);
-	if (n->right != NULL)	preorder(n->right);
+void preorder(Node* n) {
+	cout << n->val;
+	if (n->l != NULL) 	preorder(n->l);
+	if (n->r != NULL) 	preorder(n->r);
 }
 
-void inorder(Node *n) {
-	if (n->left != NULL)	inorder(n->left);
-	cout << n->data;
-	if (n->right != NULL)	inorder(n->right);
+void inorder(Node* n) {
+	if (n->l != NULL) 	inorder(n->l);
+	cout << n->val;
+	if (n->r != NULL) 	inorder(n->r);
 }
 
-void postorder(Node *n) {
-	if (n->left != NULL)	postorder(n->left);
-	if (n->right != NULL)	postorder(n->right);
-	cout << n->data;
+void postorder(Node* n) {
+	if (n->l != NULL) 	postorder(n->l);
+	if (n->r != NULL) 	postorder(n->r);
+	cout << n->val;
 }
 
 int main() {
-	int node;
-	char m, l, r;
+	ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
 	cin >> node;
-	Node Tree[26];
 	for (int i = 0; i < node; i++) {
-		Tree[i].data = 'A' + i;
-		Tree[i].left = NULL;
-		Tree[i].right = NULL;
+		Tree[i].l = NULL;
+		Tree[i].r = NULL;
+		Tree[i].val = i + 'A';
 	}
 	for (int i = 0; i < node; i++) {
-		cin >> m >> l >> r;
-		if (l != '.')	Tree[m - 'A'].left = &Tree[l - 'A'];
-		if (r != '.')	Tree[m - 'A'].right = &Tree[r - 'A'];
+		char a, b, c;
+		cin >> a >> b >> c;
+		if (b != '.')	Tree[a - 'A'].l = &Tree[b - 'A'];
+		if (c != '.')	Tree[a - 'A'].r = &Tree[c - 'A'];
 	}
 	preorder(&Tree[0]);
-	cout << endl;
+	cout << '\n';
 	inorder(&Tree[0]);
-	cout << endl;
+	cout << '\n';
 	postorder(&Tree[0]);
-	cout << endl;
-	system("pause");
 	return 0;
 }
