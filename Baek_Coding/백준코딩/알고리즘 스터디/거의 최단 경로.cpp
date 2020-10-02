@@ -2,14 +2,16 @@
 #include <iostream>
 #include <queue>
 #include <vector>
+#include <algorithm>
 using namespace std;
 struct info {
-	int idx, val, used;
+	int idx, val;
+	bool used;
+};
+struct info2 {
+	int from, idx;
 };
 info tmp;
-struct info2 {
-	int start, edgeNum;
-};
 info2 tmp2;
 struct cmp {
 	bool operator()(info &a, info &b) {
@@ -18,43 +20,42 @@ struct cmp {
 };
 long long dist[500];
 vector<info> v[500];
-vector<info2> memo[500];
+vector<info2> memo[500];		//ìµœë‹¨ê±°ë¦¬ ê°„ì„ ë²ˆí˜¸ ì €ì¥
+int node, edge, start, s, e, target;
+bool visit[500];
 
-int node, edge, start, s, e;
-
-void dijkstra() {
+void dijkstra(bool second) {
 	priority_queue<info, vector<info>, cmp> pq;
 	tmp.idx = start;
 	tmp.val = 0;
 	pq.push(tmp);
 	dist[start] = 0;
-	tmp2.start = start;
-	tmp2.edgeNum = 0;
-	memo[start].push_back(tmp2);
 	while (!pq.empty()) {
 		int cidx = pq.top().idx;
 		int cv = pq.top().val;
 		pq.pop();
 		if (cv > dist[cidx]) continue;
+		if (cidx == target && second)
+			break;
 		for (int i = 0; i < v[cidx].size(); i++) {
-			if (v[cidx][i].used == 0) {
+			if (!v[cidx][i].used) {
 				int next = v[cidx][i].idx;
 				int nv = v[cidx][i].val;
-				if (dist[next] > cv + nv) {		//»õ·Î¿î ÃÖ´Ü°Å¸®°¡ °»½ÅµÉ °æ¿ì
+				if (dist[next] > cv + nv) {		//ìƒˆë¡œìš´ ìµœë‹¨ê±°ë¦¬ê°€ ê°±ì‹ ë  ê²½ìš°
 					dist[next] = cv + nv;
 					tmp.idx = next;
 					tmp.val = cv + nv;
 					pq.push(tmp);
 
-					//±âÁ¸¿¡ ÀÖ´ø °æ·Î ÃÊ±âÈ­
+					//ê¸°ì¡´ì— ìˆë˜ ê²½ë¡œ ì´ˆê¸°í™”
 					memo[next].clear();
-					tmp2.start = cidx;
-					tmp2.edgeNum = i;
+					tmp2.from = cidx;
+					tmp2.idx = i;
 					memo[next].push_back(tmp2);
 				}
-				else if (dist[next] == cv + nv) {		//°°Àº °Å¸®ÀÇ °æ·ÎÀÏ °æ¿ì Ãß°¡
-					tmp2.start = cidx;
-					tmp2.edgeNum = i;
+				else if (dist[next] == cv + nv) {		//ê°™ì€ ê±°ë¦¬ì˜ ê²½ë¡œì¼ ê²½ìš° ì¶”ê°€
+					tmp2.from = cidx;
+					tmp2.idx = i;
 					memo[next].push_back(tmp2);
 				}
 			}
@@ -63,24 +64,35 @@ void dijkstra() {
 }
 
 void make_disable(int num) {
-	if (num == start) return;
-	for (int i = 0; i < memo[num].size(); i++) {
-		int from = memo[num][i].start;
-		int number = memo[num][i].edgeNum;
-		v[from][number].used = 1;
-		make_disable(from);
+	queue<int> q;
+	for (int i = 0; i < node; i++)
+		visit[i] = false;
+	visit[num] = true;
+	q.push(num);
+	while (!q.empty()) {
+		int cidx = q.front();
+		q.pop();
+		if (cidx == start) continue;
+		for (int i = 0; i < memo[cidx].size(); i++) {
+			int from = memo[cidx][i].from;
+			int idx = memo[cidx][i].idx;
+			v[from][idx].used = true;
+			if (!visit[from]) {
+				visit[from] = true;
+				q.push(from);
+			}
+		}
 	}
 }
 
 int main() {
 	ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
-
-	int val, target;
+	int val;
 	while (1) {
 		cin >> node >> edge;
 		if (node + edge == 0) break;
 		cin >> start >> target;
-		//ÃÊ±âÈ­
+		//ì´ˆê¸°í™”
 		for (int i = 0; i < node; i++) {
 			v[i].clear();
 			dist[i] = MAX;
@@ -91,32 +103,27 @@ int main() {
 			cin >> s >> e >> val;
 			tmp.idx = e;
 			tmp.val = val;
-			tmp.used = 0;
+			tmp.used = false;
 			v[s].push_back(tmp);
 		}
-		dijkstra();
-		if (dist[target] == MAX) {		//target±îÁöÀÇ °Å¸®°¡ Á¸ÀçÇÏÁö ¾ÊÀ» °æ¿ì
+		dijkstra(false);
+		if (dist[target] == MAX) {		//targetê¹Œì§€ì˜ ê±°ë¦¬ê°€ ì¡´ì¬í•˜ì§€ ì•Šì„ ê²½ìš°
 			cout << -1 << '\n';
 			continue;
 		}
 		make_disable(target);
-		int minDist = dist[target], result;
-		while (1) {
-			//ÃÊ±âÈ­
-			for (int i = 0; i < node; i++) {
-				dist[i] = MAX;
-				memo[i].clear();
-			}
-			dijkstra();
-			if (dist[target] != minDist) {		//ÃÖ´Ü°æ·Î°¡ ¾Æ´Ñ °æ¿ì(°ÅÀÇ ÃÖ´Ü or ¾ø´Â °æ·Î)
-				result = dist[target];
-				break;
-			}
-			make_disable(target);
+		int minDist = dist[target], result = -1;
+
+		for (int i = 0; i < node; i++) {
+			dist[i] = MAX;
+			memo[i].clear();
 		}
+		dijkstra(true);
+		if (dist[target] != minDist) 		//ìµœë‹¨ê²½ë¡œê°€ ì•„ë‹Œ ê²½ìš°(ê±°ì˜ ìµœë‹¨ or ì—†ëŠ” ê²½ë¡œ)
+			result = dist[target];		
+		
 		if (result == MAX) 	cout << -1 << '\n';
-		else cout << result << '\n';		
+		else cout << result << '\n';
 	}
-	system("pause");
 	return 0;
 }
